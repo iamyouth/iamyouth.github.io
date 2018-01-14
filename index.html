@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GaoShan,I love you.</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/jQuery.typewritter.js"></script>
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+}
+html, body {
+	background-color: #32425C;
+	color: #CE5F6F;
+	font-size: 3vh;
+	height: 100%;
+}
+.love {
+	animation: myfirst 1s ease-in-out infinite;
+	width: 40px;
+	height: 40px;
+}
+ @keyframes myfirst {
+ from {
+ transform: scale(1);
+}
+ 50% {
+transform: scale(.8);
+}
+ to {
+transform: scale(1);
+}
+}
+ @-webkit-keyframes myfirst /* Safari 与 Chrome */ {
+ from {
+background: red;
+}
+ to {
+background: yellow;
+}
+}
+.time {
+	position: absolute;
+	bottom: 16vh;
+	font-size: 2.5vh;
+	width: 100%;
+	text-align: center;
+}
+.time span {
+	color: aliceblue;
+	font-size: 5vh;
+}
+.shijing {
+	width: 25vh;
+	height: 25vh;
+	margin: 5vh auto;
+	font-size: 4vh;
+	font-weight: 800;
+}
+.qinghua {
+	padding: 0 5vw;
+	line-height: 6vh;
+}
+</style>
+</head>
+<body>
+<div id="code" class="shijing">
+	<span> 生 死 契 阔 ，<br></span>
+	<span> 与 子 成 说 。<br></span>
+	<span> 执 子 之 手 ，<br></span>
+	<span> 与 子 偕 老 。</span>
+	</div>
+<div class="qinghua">
+  <p>还记得2014年那个中午吗，我们正式地<img src="images/heart.svg" alt="" class="love">在一起了，时光真快，我们一起度过了<span id="years"></span>个春夏秋冬，回顾往昔，有吵闹有甜蜜，不过幸好我们没有被时间拆散。相信未来有你会更加美好，请好好期待吧！</p>
+</div>
+<br>
+<br>
+<p class="time">相识的第<span id="daysold"></span>天 <span id="hrsold"></span>小时 <span id="minsold"></span>分钟<span id="seconds"></span>秒</p>
+<script>         
+            function show_date_time() {
+                window.setTimeout(function() {
+                    show_date_time();
+                }, 1000);
+                var BirthDay = new Date("03,31,2014 13:00:00");
+                var today = new Date();
+                var timeold = (today.getTime() - BirthDay.getTime());
+                var msPerDay = 24 * 60 * 60 * 1000;
+				var msPerYear= 365*24 * 60 * 60 * 1000;
+                var e_daysold = timeold / msPerDay;
+				var e_yearsSold = timeold / msPerYear;
+                var daysold = Math.floor(e_daysold);
+                var e_hrsold = (e_daysold - daysold) * 24;
+                var hrsold = Math.floor(e_hrsold);
+                var e_minsold = (e_hrsold - hrsold) * 60;
+                var minsold = Math.floor((e_hrsold - hrsold) * 60);
+                var seconds = Math.floor((e_minsold - minsold) * 60);
+				document.getElementById("years").innerHTML =Math.floor(e_yearsSold);
+				$('#daysold').html(daysold);
+				$('#hrsold').html(hrsold);
+				$('#minsold').html(minsold);
+				$('#seconds').html(seconds);
+				
+            }
+            show_date_time();
+        </script> 
+<script type="text/javascript">
+$(function(){
+	$("#code").typewriter();
+})
+</script>
+</body>
+</html>
